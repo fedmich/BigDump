@@ -444,7 +444,7 @@ if (!$error && !isset($_REQUEST["fn"]) && $filename=="")
             echo ("<tr><th>Filename</th><th>Size</th><th>Date&amp;Time</th><th>Type</th><th>&nbsp;</th><th>&nbsp;</th>\n");
             $dirhead=true;
           }
-          echo ("<tr><td>$dirfile</td><td class=\"right\">".filesize($upload_dir.'/'.$dirfile)."</td><td>".date ("Y-m-d H:i:s", filemtime($upload_dir.'/'.$dirfile))."</td>");
+          echo ("<tr><td>$dirfile</td><td class=\"right\">". human_filesize(filesize($upload_dir.'/'.$dirfile) ) ."</td><td>".date ("Y-m-d H:i:s", filemtime($upload_dir.'/'.$dirfile))."</td>");
 
           if (preg_match("/\.sql$/i",$dirfile))
             echo ("<td>SQL</td>");
@@ -1165,4 +1165,9 @@ function create_ajax_script()
 <?php
 }
 
+function human_filesize($bytes, $decimals = 2) {
+  $sz = 'BKMGTP';
+  $factor = floor((strlen($bytes) - 1) / 3);
+  return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
+}
 ?>
