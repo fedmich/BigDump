@@ -86,7 +86,8 @@ $delimiter = ';';
 
 // String quotes character
 
-$string_quotes = '\'';                  // Change to '"' if your dump file uses double qoutes for strings
+//$string_quotes = '\'';                  // Change to '"' if your dump file uses double qoutes for strings
+$string_quotes = '"';                  // Change to '"' if your dump file uses double qoutes for strings
 
 // How many lines may be considered to be one query (except text lines)
 
